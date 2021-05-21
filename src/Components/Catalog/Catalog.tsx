@@ -1,12 +1,21 @@
 import { List } from "antd";
-import React from "react";
-import { CatalogPropsType } from "../../Types/Props";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ProductItem } from "../../Types/Types";
 import Navbar from "../Navbar/Navbar";
 import Product from "../Product/Product";
 import "./Catalog.css";
 
-const Catalog = ({ catalog }: CatalogPropsType) => {
+export type stateType = {
+  productState: ProductItem[];
+};
+
+const Catalog = () => {
+  const dispatch = useDispatch();
+  const state = useSelector(
+    (state: { productState: ProductItem[] }) => state.productState
+  );
+
   return (
     <div className="catalog-list">
       <List
@@ -25,7 +34,7 @@ const Catalog = ({ catalog }: CatalogPropsType) => {
           xl: 4,
           xxl: 6,
         }}
-        dataSource={catalog}
+        dataSource={state}
         renderItem={(item: ProductItem) => (
           <List.Item>
             <Product item={item} />

@@ -16,3 +16,15 @@ export type ExtraItem = {
   quantity: number;
   imgSrc: string;
 };
+
+export type ShoppingCartLine = {
+  item: ProductItem;
+  count: number;
+};
+
+export type AppState = {
+  catalog: ProductItem[];
+  shoppingCart: ShoppingCartLine[];
+  totalPrice: number;
+  quantity: number;
+};

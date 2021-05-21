@@ -1,7 +1,11 @@
-import { ProductItem } from "./Types";
+import { ExtraItem, ProductItem } from "./Types";
 
 export type CatalogPropsType = {
   catalog: ProductItem[];
   //addProduct: (product: ProductItem) => AddProduct;
   //removeProduct: (product: ProductItem) => RemoveProduct;
+};
+
+export type AdditionPropsType = {
+  addition: ExtraItem;
 };

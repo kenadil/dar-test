@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+  margin: 20px 40px 0;
+}
+
+.ant-spin-nested-loading {
+  top: 25px;
+}

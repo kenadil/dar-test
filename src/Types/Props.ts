@@ -1,4 +1,4 @@
-import { ExtraItem, ProductItem } from "./Types";
+import { ExtraItem, Ingredient, ProductItem } from "./Types";
 
 export type CatalogPropsType = {
   catalog: ProductItem[];
@@ -7,5 +7,7 @@ export type CatalogPropsType = {
 };
 
 export type AdditionPropsType = {
-  addition: ExtraItem;
+  handleCheck: (n: ExtraItem, m: boolean) => void;
+  name: String;
+  type: Ingredient[];
 };

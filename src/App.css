@@ -7,12 +7,28 @@
   top: 25px;
 }
 
-.ant-modal-content .ant-spin-nested-loading {
-  overflow-y: scroll;
-  height: 200px;
-  overflow-x: hidden;
+.ant-modal-footer {
+  height: 100px;
+  text-align: center !important;
+}
+
+.ant-modal-footer > * {
+  vertical-align: middle;
+  -ms-transform: translate(0%, -50%);
+  transform: translate(0%, 50%);
 }
 
 .change-part {
   padding: 20px 50px;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 30px 20px;
+}
+
+.popover {
+  cursor: pointer;
 }

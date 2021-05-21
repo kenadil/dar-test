@@ -5,25 +5,33 @@ export type ProductItem = {
   quantity: number;
   description: string;
   imgSrc: string;
-  takeAway: boolean;
   additions: ExtraItem[];
 };
 
-export type ExtraItem = {
-  id: number;
+export type Ingredient = {
   name: string;
   price: number;
-  quantity: number;
+  imgSrc: string;
+};
+
+export type ExtraItem = {
+  name: string;
+  price: number;
   imgSrc: string;
 };
 
 export type ShoppingCartLine = {
   item: ProductItem;
   count: number;
+  takeAway: boolean;
+  additions: ExtraItem[];
+  totalPrice: number;
 };
 
-export type AppState = {
-  catalog: ProductItem[];
+export type LineProps = {
+  line: ShoppingCartLine;
+};
+export type CartState = {
   shoppingCart: ShoppingCartLine[];
   totalPrice: number;
   quantity: number;

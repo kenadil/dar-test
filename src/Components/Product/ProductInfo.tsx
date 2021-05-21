@@ -1,14 +1,14 @@
 import "./ProductInfo.css";
 import React from "react";
 import { ChangeModalType } from "../../Types/ModalTypes";
-import { Divider } from "antd";
+import { Divider, Image } from "antd";
 import { LikeOutlined } from "@ant-design/icons";
 
 const ProductInfo = ({ item }: ChangeModalType) => {
   return (
     <div className="product-info change-part">
       <div className="image-container">
-        <img src={item.imgSrc} alt={item.name + ".jpg"} />
+        <Image src={item.imgSrc} alt={item.name + ".jpg"} />
       </div>
       <div className="text-container">
         <div className="text-heading">

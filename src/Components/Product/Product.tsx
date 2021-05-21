@@ -1,8 +1,8 @@
 import React from "react";
 import { ProductItem } from "../../Types/Types";
-import { Button, Card } from "antd";
+import { Card, Image } from "antd";
 import Meta from "antd/lib/card/Meta";
-import ChangeModal from "../Modals/ChangeModal";
+import AddModal from "../Modals/AddModal";
 
 export interface ProductProps {
   item: ProductItem;
@@ -14,15 +14,15 @@ const Product = ({ item }: ProductProps) => {
       hoverable
       cover={
         // eslint-disable-next-line jsx-a11y/alt-text
-        <img src={item.imgSrc} style={{ height: "20vh", objectFit: "cover" }} />
+        <Image
+          src={item.imgSrc}
+          style={{ height: "20vh", objectFit: "cover" }}
+        />
       }
       title={<h3>{item.name}</h3>}
       actions={[
         <h3 key="price">{item.price}$</h3>,
-        <ChangeModal item={item} />,
-        <Button style={{ border: "none", boxShadow: "none" }} key="toCart">
-          В корзину
-        </Button>,
+        <AddModal key="buy" item={item} />,
       ]}
     >
       <Meta

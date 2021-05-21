@@ -1,8 +1,13 @@
 import React from "react";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { CartState } from "../../Types/Types";
 
 const Navbar = () => {
+  const state = useSelector(
+    (state: { cartState: CartState }) => state.cartState
+  );
   return (
     <div className="list-bar">
       <nav style={{ padding: "0 50px", textAlign: "right" }}>
@@ -28,7 +33,7 @@ const Navbar = () => {
                 padding: "2px",
               }}
             >
-              0
+              {state.quantity}
             </div>
           </span>
         </Link>

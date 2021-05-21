@@ -11,7 +11,6 @@ const MainPage = () => {
   useEffect(() => {
     const fetchData = () => {
       const coffee = fetchProductsAPI();
-      console.log(coffee);
       dispatch(fetchProducts(coffee));
     };
     fetchData();

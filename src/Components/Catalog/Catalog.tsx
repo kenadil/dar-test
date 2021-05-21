@@ -1,6 +1,6 @@
 import { List } from "antd";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { ProductItem } from "../../Types/Types";
 import Navbar from "../Navbar/Navbar";
 import Product from "../Product/Product";
@@ -11,7 +11,6 @@ export type stateType = {
 };
 
 const Catalog = () => {
-  const dispatch = useDispatch();
   const state = useSelector(
     (state: { productState: ProductItem[] }) => state.productState
   );
@@ -21,7 +20,7 @@ const Catalog = () => {
       <List
         header={
           <>
-            <h1>Coffee</h1>
+            <h1>Кофе</h1>
             <Navbar />
           </>
         }

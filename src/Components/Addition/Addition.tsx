@@ -1,45 +1,84 @@
-import { Col, InputNumber, Row } from "antd";
-import React from "react";
+import { Checkbox, Col, Row, Select } from "antd";
+import React, { useEffect, useState } from "react";
 import { AdditionPropsType } from "../../Types/Props";
 
+const { Option } = Select;
 const colStyle = {
-  verticalAlign: "center",
-  lineHeight: "5",
+  verticalAlign: "middle",
+  lineHeight: "10",
 };
 
-const Addition = ({ addition }: AdditionPropsType) => {
-  const [amount, setAmount] = React.useState(0);
+const Addition = ({ type, handleCheck, name }: AdditionPropsType) => {
+  const [checked, setChecked] = useState(false);
+  const [selected, setSelected] = useState({
+    name: type[0].name,
+    price: type[0].price,
+    imgSrc: type[0].imgSrc,
+  });
 
-  const changeAmount = (value: any) => {
-    setAmount(value);
-  };
+  const [ingredient, setIngredient] = useState({
+    name: "",
+    imgSrc: "",
+    price: 0,
+  });
+
+  useEffect(() => {
+    setIngredient({
+      name: selected.name,
+      imgSrc: selected.imgSrc,
+      price: selected.price,
+    });
+  }, [selected]);
+
+  useEffect(() => {
+    handleCheck(ingredient, checked);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checked]);
 
   return (
     <>
-      <Row gutter={[8, 16]}>
+      <Row gutter={[16, 16]}>
+        <Col span={2} style={{ textAlign: "center", lineHeight: "10" }}>
+          <Checkbox
+            style={{ textAlign: "center" }}
+            onChange={(e) => setChecked(e.target.checked)}
+          />
+        </Col>
+        <Col span={4} style={{ lineHeight: "10" }}>
+          <h4>{name}</h4>
+        </Col>
         <Col span={6} style={colStyle}>
           <img
-            src={addition.imgSrc}
+            src={selected.imgSrc}
             alt=""
+            height={150}
             style={{
-              height: "75px",
               marginBottom: "16px",
-              width: "70%",
-              objectFit: "cover",
+              width: "60%",
+              objectFit: "contain",
             }}
           />
         </Col>
         <Col span={6} style={colStyle}>
-          <h4>{addition.name}</h4>
+          <Select
+            defaultValue={0}
+            style={{ minWidth: "200px" }}
+            onChange={(value) => setSelected(type[value])}
+          >
+            {type.map((e, i) => (
+              <Option value={i}>{e.name}</Option>
+            ))}
+          </Select>
         </Col>
-        <Col span={5} style={colStyle}>
-          <p>${addition.price}</p>
-        </Col>
-        <Col span={5} style={colStyle}>
-          <InputNumber defaultValue={0} onChange={changeAmount} />
-        </Col>
-        <Col span={2} style={colStyle}>
-          <h4>${amount * addition.price}</h4>
+        <Col
+          span={6}
+          style={{
+            verticalAlign: "center",
+            lineHeight: "10",
+            textAlign: "center",
+          }}
+        >
+          <h4>${selected.price}</h4>
         </Col>
       </Row>
     </>

@@ -8,3 +8,5 @@ export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const DELETE_EXTRAS = "DELETE_EXTRAS";
 
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
+
+export const CHANGE_AMOUNT = "CHANGE_AMOUNT";
